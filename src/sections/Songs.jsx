@@ -18,21 +18,34 @@ function Songs() {
   const [selectedSong, setSelectedSong] = useState(null);
   const [selectedMenu, setSelectedMenu] = useState("songs");
   const [favorites, setFavorites] = useState([]);
+  const [songs, setSongs] = useState(songsList);
+  const [showFavorites, setShowFavorites] = useState(false);
 
   const width = useWindowWidth();
 
+  function handleShowFav() {
+    const filteredSongList = songsList.filter((song) =>
+      favorites.includes(song.id)
+    );
+    setSongs(filteredSongList);
+    setShowFavorites(true);
+  }
+
+  function handleHideFav() {
+    setSongs(songsList);
+    setShowFavorites(false);
+  }
+
   return (
     <div className="flex flex-col justify-center items-center mt-5">
-      <h2 className="text-2xl font-semibold text-[#EF901E]">
-        Mes Chansons {favorites}
-      </h2>
+      <h2 className="text-2xl font-semibold text-[#EF901E]">Mes Chansons</h2>
 
       {width < 960 && (
         <div className="flex border-slate-500 border-2 rounded-lg p-1 mt-5">
           <button
             onClick={() => setSelectedMenu("songs")}
-            className={`hover:bg-orange-300 rounded-lg transition-all duration-200 p-2 ${
-              selectedMenu === "songs" ? "bg-orange-400" : ""
+            className={`transition-all duration-200 p-2 ${
+              selectedMenu === "songs" ? "underline" : ""
             }`}
           >
             Chansons
@@ -40,8 +53,8 @@ function Songs() {
           <span className="mx-2 text-2xl">|</span>
           <button
             onClick={() => setSelectedMenu("lyrics")}
-            className={`hover:bg-orange-300 rounded-lg transition-all duration-200 p-2 ${
-              selectedMenu === "lyrics" ? "bg-orange-400" : ""
+            className={`transition-all duration-200 p-2 ${
+              selectedMenu === "lyrics" ? "underline" : ""
             }`}
           >
             Paroles
@@ -55,7 +68,26 @@ function Songs() {
             width > 960 || selectedMenu === "songs" ? "" : "hidden"
           }`}
         >
-          {songsList.map((song) => (
+          {showFavorites && (
+            <button
+              onClick={handleHideFav}
+              className="mt-4 py-2 px-6 text-white bg-gray-400 rounded-full hover:bg-gray-500  
+              transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
+            >
+              Voir toutes les chanons
+            </button>
+          )}
+
+          {!showFavorites && (
+            <button
+              onClick={handleShowFav}
+              className="mt-4 py-2 px-6 text-white bg-orange-400 rounded-full hover:bg-orange-500  transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
+            >
+              Voir mes favoris
+            </button>
+          )}
+
+          {songs.map((song) => (
             <Song
               key={song.id}
               name={song.name}
@@ -70,7 +102,6 @@ function Songs() {
             />
           ))}
         </div>
-
         {(width > 960 || selectedMenu === "lyrics") && (
           <div className="p-4 border-grey-600 rounded w-[450px] h-[450px] text-white whitespace-pre-line overflow-x-auto bg-slate-600 text-center">
             {selectedSong || "Sélectionnez une chanson pour voir les paroles."}

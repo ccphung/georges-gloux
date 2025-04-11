@@ -5,12 +5,12 @@ import Navbar from "../components/Navbar";
 function Hero() {
   return (
     <>
-      <div className="flex justify-center items-center gap-10">
+      <div className="flex justify-center items-center">
         <div>
-          <img className="w-[150px]" src={logo} alt="logo" />
+          <img className="xl:w-[150px] w-20" src={logo} alt="logo" />
         </div>
 
-        <div className="relative w-[30vw]">
+        <div className="relative xl:w-[30vw] w-[60vw]">
           <img
             className="relative z-10 w-full object-cover  brightness-75 hue-rotate-15"
             src={header}
