@@ -68,24 +68,22 @@ function Songs() {
             width > 960 || selectedMenu === "songs" ? "" : "hidden"
           }`}
         >
-          {showFavorites && (
-            <button
-              onClick={handleHideFav}
-              className="mt-4 py-2 px-6 text-white bg-gray-400 rounded-full hover:bg-gray-500  
-              transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
-            >
-              Voir toutes les chanons
-            </button>
-          )}
-
-          {!showFavorites && (
-            <button
-              onClick={handleShowFav}
-              className="mt-4 py-2 px-6 text-white bg-orange-400 rounded-full hover:bg-orange-500  transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
-            >
-              Voir mes favoris
-            </button>
-          )}
+          <button
+            onClick={handleShowFav}
+            className={`mt-4 py-2 px-6 text-white bg-orange-400 rounded-full hover:bg-orange-500 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg ${
+              showFavorites ? "hidden" : ""
+            }`}
+          >
+            Voir mes favoris
+          </button>
+          <button
+            onClick={handleHideFav}
+            className={`mt-4 py-2 px-6 text-white bg-gray-400 rounded-full hover:bg-gray-500 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg ${
+              !showFavorites ? "hidden" : ""
+            }`}
+          >
+            Voir toutes les chansons
+          </button>
 
           {songs.map((song) => (
             <Song
