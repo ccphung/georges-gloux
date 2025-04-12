@@ -100,7 +100,7 @@ function Songs() {
         >
           <button
             onClick={handleShowFav}
-            className={`mt-4 py-2 px-6 text-white bg-orange-400 rounded-full hover:bg-orange-500 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg ${
+            className={`mt-4 py-2 px-6 text-white bg-orange-400 rounded-full hover:bg-orange-500 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg mb-2 ${
               showFavorites ? "hidden" : ""
             }`}
           >
@@ -142,7 +142,7 @@ function Songs() {
         </div>
 
         {(width > 960 || selectedMenu === "lyrics") && (
-          <div className="xl:overflow-y-scroll rounded-xl p-2 m-5 border-grey-600  w-[450px] max-w-[90vw] xl:h-[500px] text-white whitespace-pre-line bg-gray-800 text-center border border-gray-600">
+          <div className="xl:overflow-y-scroll rounded-xl p-2 xl:mt-[80px] xl:ml-5 border-grey-600  w-[450px] max-w-[90vw] xl:h-[500px] text-white whitespace-pre-line bg-gray-800 text-center border border-gray-600">
             {selectedSong || "Sélectionnez une chanson pour voir les paroles."}
           </div>
         )}

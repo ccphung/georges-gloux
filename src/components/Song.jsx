@@ -1,4 +1,4 @@
-import { HeartIcon } from "@heroicons/react/24/outline";
+import { ArrowRightCircleIcon, HeartIcon } from "@heroicons/react/24/outline";
 
 function Song({
   name,
@@ -31,21 +31,23 @@ function Song({
 
   return (
     <div className="mt-3">
-      <div
-        className={`text-xl flex items-center gap-2 ${
-          isPlaying ? "text-orange-500" : "text-white"
-        }`}
-      >
+      <div className={`text-xl flex items-center gap-2`}>
         <button
           onClick={
             favorites.includes(id) ? handleRemoveFavorites : handleAddFavorites
           }
         >
           <HeartIcon
-            className={`w-6 ${favorites.includes(id) ? "fill-orange-500" : ""}`}
+            className={`w-6 text-orange-500 ${
+              favorites.includes(id) ? "fill-orange-500" : ""
+            }`}
           />
         </button>
-        {name}
+        {isPlaying && <ArrowRightCircleIcon className="w-5 text-orange-500" />}
+        <p className={`${isPlaying ? "text-orange-500" : "text-white"}`}>
+          {" "}
+          {name}
+        </p>
       </div>
 
       <audio
