@@ -1,7 +1,7 @@
 import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,50 +23,45 @@ function Navbar() {
         </div>
 
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          <NavLink
-            to="/biographie"
-            className={({ isActive }) =>
-              isActive
-                ? "text-sm font-semibold text-[#EF901E] border-b-2 border-[#EF901E] px-3 py-2"
-                : "text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg"
-            }
+          <ScrollLink
+            to="bio"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg cursor-pointer"
           >
             Biographie
-          </NavLink>
-          <NavLink
-            to="/concerts"
-            className={({ isActive }) =>
-              isActive
-                ? "text-sm font-semibold text-[#EF901E] border-b-2 border-[#EF901E] px-3 py-2"
-                : "text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg"
-            }
+          </ScrollLink>
+          <ScrollLink
+            to="concert"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg cursor-pointer"
           >
             Concerts
-          </NavLink>
-          <NavLink
-            to="/mes-chansons"
-            className={({ isActive }) =>
-              isActive
-                ? "text-sm font-semibold text-[#EF901E] border-b-2 border-[#EF901E] px-3 py-2"
-                : "text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg"
-            }
+          </ScrollLink>
+          <ScrollLink
+            to="songs"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg cursor-pointer"
           >
             Mes chansons
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive
-                ? "text-sm font-semibold text-[#EF901E] border-b-2 border-[#EF901E] px-3 py-2"
-                : "text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg"
-            }
+          </ScrollLink>
+          <ScrollLink
+            to="contact"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="text-sm font-semibold text-white px-3 py-2 hover:bg-gray-800 rounded-lg cursor-pointer"
           >
             Contact
-          </NavLink>
+          </ScrollLink>
         </PopoverGroup>
       </nav>
 
-      {/* Mobile menu */}
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
@@ -87,25 +82,46 @@ function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {[
-                  { path: "/biographie", label: "Biographie" },
-                  { path: "/concerts", label: "Concerts" },
-                  { path: "/mes-chansons", label: "Mes chansons" },
-                  { path: "/contact", label: "Contact" },
-                ].map(({ path, label }) => (
-                  <NavLink
-                    key={path}
-                    to={path}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-base font-semibold text-[#EF901E] hover:bg-gray-800 block rounded-lg px-3 py-2"
-                        : "text-base font-semibold text-white hover:bg-gray-800 block rounded-lg px-3 py-2"
-                    }
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {label}
-                  </NavLink>
-                ))}
+                <ScrollLink
+                  to="bio"
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-semibold text-white hover:bg-gray-800 block rounded-lg px-3 py-2 cursor-pointer"
+                >
+                  Biographie
+                </ScrollLink>
+                <ScrollLink
+                  to="concert"
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-semibold text-white hover:bg-gray-800 block rounded-lg px-3 py-2 cursor-pointer"
+                >
+                  Concerts
+                </ScrollLink>
+                <ScrollLink
+                  to="songs"
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-semibold text-white hover:bg-gray-800 block rounded-lg px-3 py-2 cursor-pointer"
+                >
+                  Mes chansons
+                </ScrollLink>
+                <ScrollLink
+                  to="contact"
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-semibold text-white hover:bg-gray-800 block rounded-lg px-3 py-2 cursor-pointer"
+                >
+                  Contact
+                </ScrollLink>
               </div>
             </div>
           </div>
