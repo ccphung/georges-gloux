@@ -2,7 +2,7 @@ function Bio() {
   return (
     <div className="flex justify-center mt-5" id="bio">
       <div className="max-w-[1048px]">
-        <h2 className=" text-center text-2xl font-semibold text-[#EF901E]">
+        <h2 className=" text-center text-3xl font-semibold text-[#EF901E]">
           Biographie
         </h2>
 

@@ -68,7 +68,7 @@ function Songs() {
 
   return (
     <div className="flex flex-col justify-center items-center mt-5" id="songs">
-      <h2 className="text-2xl font-semibold text-[#EF901E]">Mes Chansons</h2>
+      <h2 className="text-3xl font-semibold text-[#EF901E]">Mes Chansons</h2>
 
       {width < 960 && (
         <div className="flex border-slate-500 border-2 rounded-lg p-1 mt-5">
